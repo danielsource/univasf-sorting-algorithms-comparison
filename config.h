@@ -1,3 +1,27 @@
+static int *init_asc(int len) {
+	int *a = malloc(len * sizeof(int));
+	for (int i = 0; i < len; ++i)
+		a[i] = i;
+	return a;
+}
+
+static int *init_des(int len) {
+	int *a = malloc(len * sizeof(int));
+	for (int i = 0; i < len; ++i)
+		a[i] = len-i-1;
+	return a;
+}
+
+#if RAND_MAX <= 32767
+#warning "RAND_MAX is less than or equal to 32767."
+#endif
+static int *init_ran(int len) {
+	int *a = malloc(len * sizeof(int)), c = RAND_MAX/len + 1;
+	for (int i = 0; i < len; ++i)
+		a[i] = rand() / c;
+	return a;
+}
+
 Metric sort_bubble(Sequence seq);
 Metric sort_insert(Sequence seq);
 Metric sort_quick(Sequence seq);
@@ -7,15 +31,15 @@ Metric sort_heap(Sequence seq);
 int repeattest = 3;	      /* repeat x times and get the average */
 
 Sequence seqs[] = {
-	{"ascending", init_asc, 100},
-	{"ascending", init_asc, 1000},
-	{"ascending", init_asc, 10000},
-	{"descending", init_des, 100},
-	{"descending", init_des, 1000},
-	{"descending", init_des, 10000},
-	{"random", init_ran, 100},
-	{"random", init_ran, 1000},
-	{"random", init_ran, 10000}
+	{"ascending", init_asc, 2000},
+	{"ascending", init_asc, 16000},
+	{"ascending", init_asc, 128000},
+	{"descending", init_des, 2000},
+	{"descending", init_des, 16000},
+	{"descending", init_des, 128000},
+	{"random", init_ran, 2000},
+	{"random", init_ran, 16000},
+	{"random", init_ran, 128000}
 };
 
 struct TestCase {

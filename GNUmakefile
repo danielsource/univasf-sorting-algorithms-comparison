@@ -9,7 +9,7 @@ objs := $(srcs:%=out/%.o)
 .PHONY: all
 all: test
 
-test: $(objs) GNUmakefile
+test: $(objs)
 	$(CC) $(objs) -o $@ $(LDFLAGS)
 
 out/%.c.o: %.c test.h config.h

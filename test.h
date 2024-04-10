@@ -2,10 +2,9 @@
 
 typedef struct Sequence Sequence;
 
-typedef struct TestCase TestCase;
-
 typedef struct {
-	int comp, chan, wtime;	/* comparisons, changes, walltime (elapsed time) */
+	unsigned long long comp, swap;	/* comparisons, swaps, */
+	double ptime;			/* CPU time (in ms) */
 } Metric;
 
 struct Sequence {
