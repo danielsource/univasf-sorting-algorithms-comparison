@@ -4,7 +4,7 @@ typedef struct Sequence Sequence;
 
 typedef struct {
 	unsigned long long comp, swap;	/* comparisons, swaps, */
-	double ptime;			/* CPU time (in ms) */
+	double ptime;	/* CPU time (in ms) */
 } Metric;
 
 struct Sequence {

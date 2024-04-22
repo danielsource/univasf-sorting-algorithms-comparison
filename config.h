@@ -16,7 +16,8 @@ static int *init_des(int len) {
 #warning "RAND_MAX is less than or equal to 32767."
 #endif
 static int *init_ran(int len) {
-	int *a = malloc(len * sizeof(int)), c = RAND_MAX/len + 1;
+	int *a = malloc(len * sizeof(int));
+	int c = RAND_MAX/len + 1;	/* https://c-faq.com/lib/randrange.html */
 	for (int i = 0; i < len; ++i)
 		a[i] = rand() / c;
 	return a;
@@ -28,7 +29,7 @@ Metric sort_quick(Sequence seq);
 Metric sort_merge(Sequence seq);
 Metric sort_heap(Sequence seq);
 
-int repeattest = 3;	      /* repeat x times and get the average */
+int repeattest = 3;	/* repeat x times and get the average */
 
 Sequence seqs[] = {
 	{"ascending", init_asc, 2000},

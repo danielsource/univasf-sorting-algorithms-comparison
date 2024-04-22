@@ -9,14 +9,14 @@ static void quicksort(int *a, int len) {
 	int i, j, t;
 	for (i = 0, j = len - 1; ; ++i, --j) {
 		if (a[i] < pivot) {
-			do  {
+			do {
 				++i;
 				++M.comp;
 			} while (a[i] < pivot);
 		}
 		++M.comp;
 		if (a[j] > pivot) {
-			do  {
+			do {
 				--j;
 				++M.comp;
 			} while (a[j] > pivot);
